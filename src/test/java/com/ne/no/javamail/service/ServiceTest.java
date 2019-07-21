@@ -41,7 +41,12 @@ public class ServiceTest {
     }
 
     @Test
-    public void sendInlineResourceMail(){
-        mailService.sendInlineResourceMail("2532612444@qq.com","image","image",);
+    public void sendInlineResourceMail() throws MessagingException {
+        String imgPath="d:/java/java-mail/1.jpg";
+        String rscId="hello";
+        String content="<html><body>这是有图片的邮件:<img src=\'cid:"+rscId
+                +"\'><img></body></html>";
+
+        mailService.sendInlineResourceMail("2532612444@qq.com","image",content,imgPath,rscId);
     }
 }
