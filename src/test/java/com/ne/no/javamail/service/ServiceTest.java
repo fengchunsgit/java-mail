@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
@@ -16,6 +18,9 @@ import javax.mail.MessagingException;
 public class ServiceTest {
     @Resource
     MailService mailService;
+
+    @Resource
+    TemplateEngine templateEngine;
 
     @Test
     public void sayHelloTest(){
@@ -49,4 +54,14 @@ public class ServiceTest {
 
         mailService.sendInlineResourceMail("2532612444@qq.com","image",content,imgPath,rscId);
     }
+
+    @Test
+    public void TemplateMailTest() throws MessagingException {
+        Context context=new Context();
+        context.setVariable("id","006");
+        String emailContent=templateEngine.process("emailTemplate",context);
+
+        mailService.sendHtmlMail("2532612444@qq.com","mubanyouijan",emailContent);
+    }
+
 }
