@@ -2,7 +2,7 @@ package com.ne.no.javamail.service;
 
 
 
-import com.ne.no.javamail.hello.HelloService;
+import com.ne.no.javamail.hello.MailService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,12 +12,17 @@ import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HelloTest {
+public class ServiceTest {
     @Resource
-    HelloService helloService;
+    MailService mailService;
 
     @Test
     public void sayHelloTest(){
-        helloService.sayHello();
+        mailService.sayHello();
+    }
+
+    @Test
+    public void sendSimpleMailTest(){
+        mailService.sendSimpleMail("2532612444@qq.com","这是第一封文本邮件","大家好，这是一封文本邮件");
     }
 }
