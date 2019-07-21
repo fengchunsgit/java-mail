@@ -33,4 +33,10 @@ public class ServiceTest {
 
         mailService.sendHtmlMail("2532612444@qq.com","html mail",content);
     }
+
+    @Test
+    public  void setAttachmentsMailTest() throws MessagingException {
+        String filePath="d:/java/java-mail/README.md";
+        mailService.sendAttachmentsMail("2532612444@qq.com","attachments","fujian ",filePath);
+    }
 }
