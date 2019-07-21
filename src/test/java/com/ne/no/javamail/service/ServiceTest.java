@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,5 +25,12 @@ public class ServiceTest {
     @Test
     public void sendSimpleMailTest(){
         mailService.sendSimpleMail("2532612444@qq.com","这是第一封文本邮件","大家好，这是一封文本邮件");
+    }
+
+    @Test
+    public void sendHtmlMailTest() throws MessagingException {
+        String content="<html>\n"+"<body>\n"+"<h3>hello html mail</h3></body></html>";
+
+        mailService.sendHtmlMail("2532612444@qq.com","html mail",content);
     }
 }
