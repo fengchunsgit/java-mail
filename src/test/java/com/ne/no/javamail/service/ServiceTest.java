@@ -35,8 +35,13 @@ public class ServiceTest {
     }
 
     @Test
-    public  void setAttachmentsMailTest() throws MessagingException {
+    public  void sendAttachmentsMailTest() throws MessagingException {
         String filePath="d:/java/java-mail/README.md";
         mailService.sendAttachmentsMail("2532612444@qq.com","attachments","fujian ",filePath);
+    }
+
+    @Test
+    public void sendInlineResourceMail(){
+        mailService.sendInlineResourceMail("2532612444@qq.com","image","image",);
     }
 }
